@@ -114,19 +114,19 @@ function insertAfter(charu,zhihou){
 
 
 function getDoc(){
-  var doc=null;
-  document.body.scrollTop=0;
-  if (document.body.scrollTop==0) {
-    doc=document.body
-  }else{
-    doc=document.documentElement
+  // var doc=null;
+  // document.body.scrollTop=0;
+  // if (document.body.scrollTop==0) {
+  //   doc=document.body
+  // }else{
+  //   doc=document.documentElement
+  // }
+    var doc = document.body.scrollTop;  
+  if(0==doc){  
+      doc = document.documentElement.scrollTop;  
   }
-  // var doc = document.body.scrollTop;  
-  //   if(0==doc){  
-  //       doc = document.documentElement.scrollTop;  
-  //   }
-      return doc;
-    }
+  return doc;
+}
 
 
  function contains (parent,child) {
