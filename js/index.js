@@ -101,85 +101,128 @@ function move(){
   t=setInterval(move,1000)
    }
 //遮罩
- var xiaotu=document.getElementsByClassName("xiaotu")
- var masks=document.getElementsByClassName("mask");
-     for (var i = 0; i < xiaotu.length; i++) {
-          xiaotu[i].index=i;
-          //给每一个按钮添加一个index属性，值为它在集合中的下标
-          xiaotu[i].onmouseover=function(){
-               masks[this.index].style.opacity="0.8"       // 
-          }
-          xiaotu[i].onmouseout=function(){
-               masks[this.index].style.opacity="0"
-          } 
+ // var xiaotu=document.getElementsByClassName("xiaotu")
+ // var masks=document.getElementsByClassName("mask");
+ //     for (var i = 0; i < xiaotu.length; i++) {
+ //          xiaotu[i].index=i;
+ //          //给每一个按钮添加一个index属性，值为它在集合中的下标
+ //          xiaotu[i].onmouseover=function(){
+ //               masks[this.index].style.opacity="0.8"       // 
+ //          }
+ //          xiaotu[i].onmouseout=function(){
+ //               masks[this.index].style.opacity="0"
+ //          } 
 
-}
+// }
       //侧边导航和顶部搜索滚轮效果
-      var floor=document.getElementsByClassName("bian-left")[0];
-      var tpsBox=document.getElementsByClassName("topsearch-box")[0];
-      var flag1=true;
-      var flag2=true;
-      if(document.documentElement.scrollTop==1) {
-          document.documentElement.scrollTop;
-       }else{
-          document.body;
-       }
+      // var floor=document.getElementsByClassName("bian-left")[0];
+      // var tpsBox=document.getElementsByClassName("topsearch-box")[0];
+      // var flag1=true;
+      // var flag2=true;
+      // if(document.documentElement.scrollTop==1) {
+      //     document.documentElement.scrollTop;
+      //  }else{
+      //     document.body;
+      //  }
       //楼层跳转
-      var qinzi=$(".tt");
-      var bian=$(".pp");
-      for (var i = 0; i < qinzi.length; i++) {
-          bian[i].index=i
-        for (var j = 0; j < qinzi.length; j++) {
-          bian[j].onclick=function(){
-            var height=qinzi[this.index].offsetTop-50
-            var doc=getDoc();
-            animate(doc,{scrollTop:height},1000)
-          };
-        }
-      };
-      window.onscroll=function(){
+      // var qinzi=$(".tt");
+      // var bian=$(".pp");
+      // for (var i = 0; i < qinzi.length; i++) {
+      //     bian[i].index=i;
+      //   for (var j = 0; j < qinzi.length; j++) {
+      //     bian[j].onclick=function(){
+      //       var height=qinzi[this.index].offsetTop-50
+      //       var doc=getDoc();
+      //       animate(doc,{scrollTop:height},1000)
+      //     };
+      //   }
+      // };
+      // window.onscroll=function(){
         //侧边导航和顶部搜索滚轮效果
-      var floorobj=document.documentElement;
-       if(document.documentElement.scrollTop==1) {
-          document.documentElement.scrollTop;
-       }else{
-          document.body;
-       }
-      if (floorobj.scrollTop>650) {
-          if (flag1) {
-               flag1=false;
-               flag2=true;
-        animate(floor,{width:36,height:316})
-        animate(tpsBox,{top:0})
-        };
-        }else{
-          if (flag2) {
-               flag1=true;
-               flag2=false;
-           animate(floor,{width:0,height:0})
-           animate(tpsBox,{top:-50})
-           };
-        }
+      // var floorobj=document.documentElement;
+      //  if(document.documentElement.scrollTop==1) {
+      //     document.documentElement.scrollTop;
+      //  }else{
+      //     document.body;
+      //  }
+      //  var floorobj = document.body.scrollTop;  
+      //   if(0==floorobj){  
+      //       floorobj = document.documentElement.scrollTop;  
+      //   }
+      // if (floorobj.scrollTop>650) {
+      //     if (flag1) {
+      //          flag1=false;
+      //          flag2=true;
+      //   animate(floor,{width:36,height:316})
+      //   animate(tpsBox,{top:0})
+      //   };
+      //   }else{
+      //     if (flag2) {
+      //          flag1=true;
+      //          flag2=false;
+      //      animate(floor,{width:0,height:0})
+      //      animate(tpsBox,{top:-50})
+      //      };
+      //   }
        //楼层颜色变化
-        var arr=["#EA5F8D","#19C8A9","#F7A945","#F15453","#64C333","#0AA6E8","#000"]
-        var doc=getDoc();
-        var op=doc.scrollTop+300
-      for (var j = 0; j < qinzi.length; j++) {
-        if(op>(qinzi[j].offsetTop)){
-          for (var i = 0; i < qinzi.length; i++) {
-            bian[i].style.background=""
-          };
-          bian[j].style.background=arr[j]
-        }
-      };
-      
+      //   var arr=["#EA5F8D","#19C8A9","#F7A945","#F15453","#64C333","#0AA6E8","#000"]
+      //   var doc=getDoc();
+      //   var op=doc.scrollTop+300
+      // for (var j = 0; j < qinzi.length; j++) {
+      //   if(op>(qinzi[j].offsetTop)){
+      //     for (var i = 0; i < qinzi.length; i++) {
+      //       bian[i].style.background=""
+      //     };
+      //     bian[j].style.background=arr[j]
+      //   }
+      // };
 
-
-
-
-
-    }
+    // }
     
+    var topbn=$(".yincang-top-box")[0];
+ var leftbn=$(".left-box")[0];
+ document.documentElement.scrollTop=1;
+ if(document.documentElement.scrollTop==1){
+ var scrollobj=document.documentElement;
+}else{
+  var scrollobj=document.body;
+}
+ var flag=true;
+ var flag2=true;
+ function cx(){
+  var st=scrollobj.scrollTop;
+  if(st>650){
+    if(flag){
+      flag=false;
+      flag2=true
+    animate(topbn,{top:0})
+    animate(leftbn,{width:35,height:370})
+}
+  }else{
+    if (flag2) {
+      flag2=false
+      flag=true
+    
+    animate(topbn,{top:-50})
+    animate(leftbn,{width:0,height:0})
+  }
+
+ }
+
+  } 
+  addEvent(window,"scroll",cx)
+
+ //左侧侧拉
+ var  l=$(".gld")
+ var  lr=$(".banner-left1-1")
+ for (var i = 0; i < l.length; i++) {
+  l[i].index=i
+   hover(l[i],function(){
+    lr[this.index].style.display="block"
+   },function(){
+    lr[this.index].style.display="none"
+   })
+ };
 //图片左移
 var midTu=$(".mid1-tu");
 var midImg=("img",midTu);
@@ -243,6 +286,28 @@ var doc=getDoc();
    left1.onclick=function(){
     animate(doc,{scrollTop:0})
    }
+
+var  l=$(".gld")
+ var  lr=$(".banner-left1-1")
+ for (var i = 0; i < l.length; i++) {
+  l[i].index=i
+   hover(l[i],function(){
+    lr[this.index].style.display="block"
+   },function(){
+    lr[this.index].style.display="none"
+   })
+ };
+
+var remenb=$("li",$(".remen-zhong-zhong")[0])
+var remenl=$(".remen-1");
+for (var i = 0; i < remenb.length; i++) {
+  remenb[i].index=i
+   hover(remenb[i],function(){
+    remenl[this.index].style.display="block"
+   },function(){
+    remenl[this.index].style.display="none"
+   })
+ };
 
 
 

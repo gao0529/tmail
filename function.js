@@ -127,7 +127,13 @@ function getDoc(){
   }
   return doc;
 }
-
+function addEvent(obj,event,context){
+  if (obj,addEventListener){
+    obj,addEventListener(event,context,false)
+  }else{
+    obj.addEvent("on"+event,context)
+  }
+  }
 
  function contains (parent,child) {
   if(parent.contains){
