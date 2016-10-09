@@ -115,14 +115,20 @@ function insertAfter(charu,zhihou){
 
 function getDoc(){
   var doc=null;
-  document.body.scrollTop=1;
-  if (document.body.scrollTop==1) {
+  document.body.scrollTop=0;
+  if (document.body.scrollTop==0) {
     doc=document.body
   }else{
     doc=document.documentElement
   }
-  return doc;
-}
+  // var doc = document.body.scrollTop;  
+  //   if(0==doc){  
+  //       doc = document.documentElement.scrollTop;  
+  //   }
+      return doc;
+    }
+
+
  function contains (parent,child) {
   if(parent.contains){
      return parent.contains(child) && parent!=child;
