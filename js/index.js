@@ -101,6 +101,16 @@ function move(){
   t=setInterval(move,1000)
    }
 //遮罩
+var remenb=$("li",$(".remen-zhong-zhong")[0])
+var remenl=$(".remen-1");
+for (var i = 0; i < remenb.length; i++) {
+  remenb[i].index=i
+   hover(remenb[i],function(){
+    remenl[this.index].style.display="block"
+   },function(){
+    remenl[this.index].style.display="none"
+   })
+ };
  // var xiaotu=document.getElementsByClassName("xiaotu")
  // var masks=document.getElementsByClassName("mask");
  //     for (var i = 0; i < xiaotu.length; i++) {
@@ -179,35 +189,35 @@ function move(){
 
     // }
     
-    var topbn=$(".yincang-top-box")[0];
- var leftbn=$(".left-box")[0];
- document.documentElement.scrollTop=1;
- if(document.documentElement.scrollTop==1){
- var scrollobj=document.documentElement;
-}else{
-  var scrollobj=document.body;
-}
- var flag=true;
- var flag2=true;
- function cx(){
-  var st=scrollobj.scrollTop;
-  if(st>650){
-    if(flag){
-      flag=false;
-      flag2=true
-    animate(topbn,{top:0})
-    animate(leftbn,{width:35,height:370})
-}
-  }else{
-    if (flag2) {
-      flag2=false
-      flag=true
-    
-    animate(topbn,{top:-50})
-    animate(leftbn,{width:0,height:0})
-  }
+      var topbn=$(".yincang-top-box")[0];
+     var leftbn=$(".left-box")[0];
+     document.documentElement.scrollTop=1;
+     if(document.documentElement.scrollTop==1){
+     var scrollobj=document.documentElement;
+    }else{
+      var scrollobj=document.body;
+    }
+     var flag=true;
+     var flag2=true;
+     function cx(){
+      var st=scrollobj.scrollTop;
+      if(st>650){
+        if(flag){
+          flag=false;
+          flag2=true
+        animate(topbn,{top:0})
+        animate(leftbn,{width:35,height:370})
+    }
+      }else{
+        if (flag2) {
+          flag2=false
+          flag=true
+        
+        animate(topbn,{top:-50})
+        animate(leftbn,{width:0,height:0})
+      }
 
- }
+     }
 
   } 
   addEvent(window,"scroll",cx)
@@ -298,16 +308,7 @@ var  l=$(".gld")
    })
  };
 
-var remenb=$("li",$(".remen-zhong-zhong")[0])
-var remenl=$(".remen-1");
-for (var i = 0; i < remenb.length; i++) {
-  remenb[i].index=i
-   hover(remenb[i],function(){
-    remenl[this.index].style.display="block"
-   },function(){
-    remenl[this.index].style.display="none"
-   })
- };
+
 
 
 
